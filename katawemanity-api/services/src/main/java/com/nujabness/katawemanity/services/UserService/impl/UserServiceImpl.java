@@ -1,23 +1,30 @@
 package com.nujabness.katawemanity.services.UserService.impl;
 
+import com.nujabness.katawemanity.beans.commons.ClientBean;
 import com.nujabness.katawemanity.beans.commons.UserBean;
 import com.nujabness.katawemanity.beans.request.RegisterRequest;
+import com.nujabness.katawemanity.data.dao.IClientRepository;
 import com.nujabness.katawemanity.data.dao.IUserRepository;
+import com.nujabness.katawemanity.data.entity.Client;
 import com.nujabness.katawemanity.data.entity.User;
 import com.nujabness.katawemanity.services.UserService.IUserService;
+import com.nujabness.katawemanity.services.adapter.ClientBeanServiceAdapter;
 import com.nujabness.katawemanity.services.adapter.UserBeanServiceAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
 public class UserServiceImpl implements IUserService {
 
-  @Autowired
-  private IUserRepository userRepository;
+  @Autowired  private IUserRepository userRepository;
+  @Autowired private IClientRepository clientRepository;
 
   @Autowired
   private EntityManager entityManager;
@@ -34,7 +41,11 @@ public class UserServiceImpl implements IUserService {
     return UserBeanServiceAdapter.transformToUserBeanService(user);
   }
 
-  public void getAllClient() throws Exception {}
+  public List<ClientBean> getAllClient() throws Exception {
+      List<Client> clients = clientRepository.findAllClient();
+      return clients.stream().map(ClientBeanServiceAdapter::transformToClientBeanService).collect(Collectors.toList());
+  }
+
   public void getAllProduit() throws Exception {}
 
   public void getAllAchat() throws Exception {}

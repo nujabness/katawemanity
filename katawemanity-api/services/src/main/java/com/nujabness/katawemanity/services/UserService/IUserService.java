@@ -1,10 +1,13 @@
 package com.nujabness.katawemanity.services.UserService;
 
+import com.nujabness.katawemanity.beans.commons.ClientBean;
 import com.nujabness.katawemanity.beans.commons.UserBean;
 import com.nujabness.katawemanity.beans.request.RegisterRequest;
 
+import java.util.List;
+
 public interface IUserService {
-    void getAllClient() throws Exception;
+    List<ClientBean> getAllClient() throws Exception;
     void getAllProduit() throws Exception;
     void getAllAchat() throws Exception;
 

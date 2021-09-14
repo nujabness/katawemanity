@@ -30,8 +30,7 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<Response<CustomUsernamePasswordAuthenticationToken>> login(@RequestBody LoginRequest loginBeanRequest) {
         Response<CustomUsernamePasswordAuthenticationToken> response = new Response<>();
-        CustomUsernamePasswordAuthenticationToken token = authenticationProvider.authenticate(loginBeanRequest);
-        response.setResult(token);
+        response.setResult(authenticationProvider.authenticate(loginBeanRequest));
         response.setSuccess(true);
         return ResponseEntity.ok(response);
     }
@@ -40,8 +39,7 @@ public class AuthenticationController {
     public ResponseEntity<Response<UserBean>> register(@RequestBody RegisterRequest registerRequest) {
       Response<UserBean> response = new Response<>();
       try{
-          UserBean userBean = userService.insertUser(registerRequest);
-          response.setResult(userBean);
+          response.setResult(userService.insertUser(registerRequest));
           response.setSuccess(true);
       }catch (Exception e){
           response.setSuccess(false);
