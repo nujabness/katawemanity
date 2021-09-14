@@ -4,6 +4,7 @@ import com.nujabness.katawemanity.beans.commons.AchatBean;
 import com.nujabness.katawemanity.beans.commons.ClientBean;
 import com.nujabness.katawemanity.beans.commons.ProduitBean;
 import com.nujabness.katawemanity.beans.commons.UserBean;
+import com.nujabness.katawemanity.beans.request.ClientRequest;
 import com.nujabness.katawemanity.beans.request.RegisterRequest;
 import com.nujabness.katawemanity.data.dao.IAchatRepository;
 import com.nujabness.katawemanity.data.dao.IClientRepository;
@@ -23,7 +24,6 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,20 +68,14 @@ public class UserServiceImpl implements IUserService {
   }
 
 
-  public void deleteProduit() throws Exception {}
-  public void deleteClient() throws Exception {}
+  public Integer deleteClient(ClientRequest clientRequest) throws Exception {
+    return clientRepository.deleteClientByIdentifiant(clientRequest.getId());
+  }
 
-  public void deleteAchat() throws Exception {}
 
-  public void updateProduit() throws Exception {}
-  public void updateAchat() throws Exception {}
-  public void updateClient() throws Exception {}
+  public Integer updateClient(ClientRequest clientRequest) throws Exception {
+    return clientRepository.updateClientByIdentifiant(clientRequest.getId(),clientRequest.getNom(),clientRequest.getPrenom(),clientRequest.getAdresse());
+  }
 
-  public void updateUser() throws Exception {}
-  public void getClient() throws Exception {}
 
-  public void getProduit() throws Exception {}
-
-  public void insertAchat() throws Exception {}
-  public void insertClient() throws Exception {}
 }

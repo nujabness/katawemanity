@@ -5,7 +5,6 @@ import com.nujabness.katawemanity.beans.commons.UserBean;
 import com.nujabness.katawemanity.beans.request.LoginRequest;
 import com.nujabness.katawemanity.beans.request.RegisterRequest;
 import com.nujabness.katawemanity.beans.wrapper.Response;
-import com.nujabness.katawemanity.data.entity.User;
 import com.nujabness.katawemanity.services.UserService.IUserService;
 import com.nujabness.katawemanity.services.authentification.AuthenticationProvider;
 import com.nujabness.katawemanity.services.authentification.CustomUsernamePasswordAuthenticationToken;

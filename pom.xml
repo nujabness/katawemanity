@@ -32,6 +32,9 @@
 		<jackson-annotation.version>2.12.4</jackson-annotation.version>
 		<tomcat-embed-core.version>9.0.52</tomcat-embed-core.version>
 		<jjwt.version>0.9.1</jjwt.version>
+		<spring-security-web.version>5.5.2</spring-security-web.version>
+		<spring-security-config.version>5.5.2</spring-security-config.version>
+
 
 		<maven-jar-plugin.version>3.1.2</maven-jar-plugin.version>
 		<spring-boot-maven-plugin.version>2.1.4.RELEASE</spring-boot-maven-plugin.version>
@@ -66,6 +69,16 @@
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-security</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>${spring-security-web.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>${spring-security-config.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
