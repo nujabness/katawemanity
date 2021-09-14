@@ -1,6 +1,8 @@
 package com.nujabness.katawemanity.services.UserService;
 
+import com.nujabness.katawemanity.beans.commons.AchatBean;
 import com.nujabness.katawemanity.beans.commons.ClientBean;
+import com.nujabness.katawemanity.beans.commons.ProduitBean;
 import com.nujabness.katawemanity.beans.commons.UserBean;
 import com.nujabness.katawemanity.beans.request.RegisterRequest;
 
@@ -8,8 +10,8 @@ import java.util.List;
 
 public interface IUserService {
     List<ClientBean> getAllClient() throws Exception;
-    void getAllProduit() throws Exception;
-    void getAllAchat() throws Exception;
+    List<ProduitBean> getAllProduit() throws Exception;
+    List<AchatBean> getAllAchat() throws Exception;
 
     void deleteProduit() throws Exception;
     void deleteClient() throws Exception;

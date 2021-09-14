@@ -1,7 +1,9 @@
 package com.nujabness.katawemanity.api.controller;
 
 
+import com.nujabness.katawemanity.beans.commons.AchatBean;
 import com.nujabness.katawemanity.beans.commons.ClientBean;
+import com.nujabness.katawemanity.beans.commons.ProduitBean;
 import com.nujabness.katawemanity.beans.wrapper.Response;
 import com.nujabness.katawemanity.services.UserService.IUserService;
 import org.slf4j.Logger;
@@ -26,6 +28,32 @@ public class SelectController {
         Response<List<ClientBean>> response = new Response<List<ClientBean>>();
         try {
             response.setResult(userService.getAllClient());
+            response.setSuccess(true);
+        } catch (Exception e) {
+            response.setMessage(e.getMessage());
+            response.setSuccess(false);
+        }
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/produits")
+    public ResponseEntity<Response<List<ProduitBean>>> getProduits() {
+        Response<List<ProduitBean>> response = new Response<List<ProduitBean>>();
+        try {
+            response.setResult(userService.getAllProduit());
+            response.setSuccess(true);
+        } catch (Exception e) {
+            response.setMessage(e.getMessage());
+            response.setSuccess(false);
+        }
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/achats")
+    public ResponseEntity<Response<List<AchatBean>>> getAchats() {
+        Response<List<AchatBean>> response = new Response<List<AchatBean>>();
+        try {
+            response.setResult(userService.getAllAchat());
             response.setSuccess(true);
         } catch (Exception e) {
             response.setMessage(e.getMessage());

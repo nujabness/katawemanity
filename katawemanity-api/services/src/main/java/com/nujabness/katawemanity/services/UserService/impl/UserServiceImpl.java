@@ -1,14 +1,22 @@
 package com.nujabness.katawemanity.services.UserService.impl;
 
+import com.nujabness.katawemanity.beans.commons.AchatBean;
 import com.nujabness.katawemanity.beans.commons.ClientBean;
+import com.nujabness.katawemanity.beans.commons.ProduitBean;
 import com.nujabness.katawemanity.beans.commons.UserBean;
 import com.nujabness.katawemanity.beans.request.RegisterRequest;
+import com.nujabness.katawemanity.data.dao.IAchatRepository;
 import com.nujabness.katawemanity.data.dao.IClientRepository;
+import com.nujabness.katawemanity.data.dao.IProduitRepository;
 import com.nujabness.katawemanity.data.dao.IUserRepository;
+import com.nujabness.katawemanity.data.entity.Achat;
 import com.nujabness.katawemanity.data.entity.Client;
+import com.nujabness.katawemanity.data.entity.Produit;
 import com.nujabness.katawemanity.data.entity.User;
 import com.nujabness.katawemanity.services.UserService.IUserService;
+import com.nujabness.katawemanity.services.adapter.AchatBeanServiceAdapter;
 import com.nujabness.katawemanity.services.adapter.ClientBeanServiceAdapter;
+import com.nujabness.katawemanity.services.adapter.ProduitBeanServiceAdapter;
 import com.nujabness.katawemanity.services.adapter.UserBeanServiceAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +33,8 @@ public class UserServiceImpl implements IUserService {
 
   @Autowired  private IUserRepository userRepository;
   @Autowired private IClientRepository clientRepository;
+  @Autowired private IProduitRepository produitRepository;
+  @Autowired private IAchatRepository achatRepository;
 
   @Autowired
   private EntityManager entityManager;
@@ -46,9 +56,18 @@ public class UserServiceImpl implements IUserService {
       return clients.stream().map(ClientBeanServiceAdapter::transformToClientBeanService).collect(Collectors.toList());
   }
 
-  public void getAllProduit() throws Exception {}
+  public List<ProduitBean> getAllProduit() throws Exception {
+    List<Produit> produits = produitRepository.findAllProduit();
+    return produits.stream().map(ProduitBeanServiceAdapter::transformToProduitBeanService).collect(Collectors.toList());
+  }
 
-  public void getAllAchat() throws Exception {}
+  public List<AchatBean> getAllAchat() throws Exception {
+    List<Achat> achats = achatRepository.findAllAchat();
+    return achats.stream().map(AchatBeanServiceAdapter::transformToAchatBeanService).collect(Collectors.toList());
+
+  }
+
+
   public void deleteProduit() throws Exception {}
   public void deleteClient() throws Exception {}
 
