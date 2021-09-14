@@ -1,5 +1,8 @@
 package com.nujabness.katawemanity.services.UserService;
 
+import com.nujabness.katawemanity.beans.commons.UserBean;
+import com.nujabness.katawemanity.beans.request.RegisterRequest;
+
 public interface IUserService {
     void getAllClient() throws Exception;
     void getAllProduit() throws Exception;
@@ -19,7 +22,7 @@ public interface IUserService {
     void getProduit() throws Exception;
 
     void insertAchat() throws Exception;
-    void insertUser() throws Exception;
+    UserBean insertUser(RegisterRequest registerRequest) throws Exception;
     void insertClient() throws Exception;
 
 }

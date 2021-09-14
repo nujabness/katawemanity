@@ -1,4 +1,4 @@
-package com.nujabness.katawemanity.api.response;
+package com.nujabness.katawemanity.beans.wrapper;
 
 import lombok.Data;
 
